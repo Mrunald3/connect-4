@@ -4,7 +4,8 @@ unique_ids:
     standard-page.html: DNJI463ORDH775X5ZZXXCFG5QIITSJZA
     theme.css: GQN2LUT2O4PXHD42HPJPKYTXRMXM2NN2
   forms:
-    Form1: KOOX7JAW4AM25D2BBNLE4ACE5U4Y7WTV
-  modules: {}
+    CNN: KOOX7JAW4AM25D2BBNLE4ACE5U4Y7WTV
+  modules:
+    CNN.Module1: '177058054667265883453622.2499'
   scripts: {}
   server_modules: {}
