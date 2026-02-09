@@ -1046,3 +1046,15 @@ div.plot-container.plotly svg.main-svg {
 .anvil-spinner {
     --anvil-spinner-bg: %color:Surface Variant%;
 }
+
+/* This forces the buttons to show the full number without the ... */
+.anvil-role-raised {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  min-width: 0 !important;
+}
+
+.anvil-role-raised {
+  padding: 4px 0px !important;
+  min-width: 0 !important;
+}

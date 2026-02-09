@@ -5,12 +5,15 @@ components:
   properties: {}
   type: FlowPanel
 - components: []
+  data_bindings:
+  - {code: 'self.item['''']', property: spacing, writeback: false}
   layout_properties: {slot: default}
   name: content_panel
   properties:
     col_widths: '{}'
     spacing:
       padding: ['100', '', '100', null]
+    wrap_on: never
   type: ColumnPanel
 container:
   properties: {html: '@theme:standard-page.html'}
