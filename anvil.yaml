@@ -24,7 +24,7 @@ db_schema:
     server: full
     title: Users
 dependencies: []
-metadata: {description: An interactive study comparing CNN and Transformer architectures trained on MCTS data to play Connect 4., logo_img: 'asset:Connect 4.jpg', title: Connect 4}
+metadata: {description: An interactive study comparing CNN and Transformer architectures trained on MCTS data to play Connect 4., logo_img: 'asset:Connect 4 Image.png', title: Connect 4}
 name: Connect 4
 package_name: Connect_4
 renamed: true
