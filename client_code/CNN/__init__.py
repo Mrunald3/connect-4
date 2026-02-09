@@ -55,6 +55,11 @@ class CNN(CNNTemplate):
     self.board = [[0] * 7 for _ in range(6)]
     self.canvas_1.set_event_handler('show', lambda **e: self.draw_board())
 
+    # Add to CNN form __init__
+    self.back_button = Button(text="Main Menu", role='link')
+    self.back_button.set_event_handler('click', lambda **e: open_form('Home'))
+    self.main_container.add_component(self.back_button)
+
   def draw_board(self, custom_board=None):
     board_to_draw = custom_board if custom_board else self.board
     c = self.canvas_1
