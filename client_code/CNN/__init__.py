@@ -22,7 +22,7 @@ class CNN(CNNTemplate):
     # --- IMAGE ASSET CHECK ---
     # Make sure the filename below matches your Assets folder EXACTLY
     try:
-      self.hero = Image(source="_/theme/Connect 4 Image.jpg", height=220, display_mode='shrink_to_fit')
+      self.hero = Image(source="_/theme/Connect 4 Image.png", height=220, display_mode='shrink_to_fit')
       self.main_container.add_component(self.hero)
     except:
       print("Image filename mismatch in Assets folder.")

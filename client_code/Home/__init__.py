@@ -15,7 +15,7 @@ class Home(HomeTemplate):
 
     # 3. FIX FILENAME: Use .jpg to match your actual file
     # Changed from .png to .jpg based on your successful upload
-    self.logo = Image(source="_/theme/Connect 4 Image.jpg", 
+    self.logo = Image(source="_/theme/Connect 4 Image.png", 
                       height=400, 
                       display_mode='shrink_to_fit')
     self.main_container.add_component(self.logo)
