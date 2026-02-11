@@ -1054,3 +1054,42 @@ div.plot-container.plotly svg.main-svg {
   padding-right: 2px !important;
   min-width: 0 !important;
 }
+
+/* --- NEW CORRECTED FULL SCREEN DARK THEME --- */
+
+/* 1. Force the absolute bottom-most layers to be dark */
+html, body {
+  background-color: #1a1a1a !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh;
+}
+
+/* 2. Fix the structure background */
+.structure {
+  background-color: #1a1a1a !important;
+  min-height: 100vh;
+}
+
+/* 3. Ensure the content area is visible and dark */
+.content {
+  background-color: #1a1a1a !important;
+  display: block !important; 
+  min-height: 100vh;
+}
+
+/* 4. Hide ONLY the white navbar/header elements */
+.anvil-navbar, .app-bar, .nav-holder .left-nav {
+  display: none !important;
+}
+
+/* 5. IMPORTANT: Keep the nav-holder visible so the game shows */
+.nav-holder {
+  display: flex !important;
+  background-color: #1a1a1a !important;
+}
+
+/* 6. Permanently hide the white loading spinner */
+#anvil-loading-spinner, .anvil-load-indicator {
+  display: none !important;
+}

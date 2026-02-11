@@ -1,69 +1,59 @@
 from ._anvil_designer import HomeTemplate
 from anvil import *
-import anvil.server
 
 class Home(HomeTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
-    # 1. MATCH DARK THEME: Change white to the dark background
-    self.background = "#1a1a1a" 
+    # 1. FULL SCREEN FIX: Force the background to cover the whole window
+    self.background = "#1a1a1a"
+    self.clear() 
 
-    # 2. Main container (Fixed 600px width for centering)
-    self.main_container = ColumnPanel(width=600)
-    self.add_component(self.main_container)
+    # 2. CENTERING FIX: Create a wrapper to keep content in the middle
+    self.center_wrapper = FlowPanel(align='center')
+    self.add_component(self.center_wrapper)
 
-    # 3. FIX FILENAME: Use .jpg to match your actual file
-    # Changed from .png to .jpg based on your successful upload
-    self.logo = Image(source="_/theme/Connect 4 Image.png", 
-                      height=400, 
-                      display_mode='shrink_to_fit')
+    # 3. Standardized 600px container for consistency with the CNN page
+    self.main_container = ColumnPanel(width=1000)
+    self.center_wrapper.add_component(self.main_container)
+
+    # 4. HERO IMAGE (From Assets)
+    self.logo = Image(source="_/theme/Connect 4 Image.png", height=550, display_mode='shrink_to_fit')
     self.main_container.add_component(self.logo)
 
-    # 4. TITLE: Neon blue for better contrast on dark
-    self.title = Label(text="CONNECT 4 OPTIMIZED", 
-                       align='center', 
-                       font_size=32, 
-                       bold=True, 
-                       foreground="#00d4ff")
+    # 5. TITLE
+    self.title = Label(text="CONNECT 4", align='center', font_size=32, bold=True, foreground="#00d4ff")
     self.main_container.add_component(self.title)
 
-    # 5. BUTTONS: Updated colors for high visibility
-    self.play_button = Button(text="PLAY NOW", role='raised', 
-                              background='#ff4b2b', foreground='white', 
-                              font_size=24, bold=True)
-    self.play_button.set_event_handler('click', self.play_now_click)
-    self.main_container.add_component(self.play_button)
+    # 6. ACTION BUTTONS
+    # Main Play Button
+    self.play_btn = Button(text="PLAY NOW", background='#ff4b2b', foreground='white', font_size=24, bold=True)
+    self.play_btn.set_event_handler('click', lambda **e: open_form('CNN'))
+    self.main_container.add_component(self.play_btn)
 
-    self.help_button = Button(text="HOW TO PLAY", role='secondary-color', foreground="white")
-    self.help_button.set_event_handler('click', self.how_to_play_click)
-    self.main_container.add_component(self.help_button)
+    # How to Play Button
+    self.help_btn = Button(text="HOW TO PLAY", role='secondary-color', foreground="white", spacing_above='small')
+    self.help_btn.set_event_handler('click', self.how_to_play_click)
+    self.main_container.add_component(self.help_btn)
 
-    # 6. Bottom Row
-    self.bottom_row = FlowPanel(align='center')
-    self.main_container.add_component(self.bottom_row)
+    # 7. FOOTER ROW: About Us & Exit
+    self.footer_row = FlowPanel(align='center', spacing_above='medium')
+    self.main_container.add_component(self.footer_row)
 
-    self.about_button = Button(text="ABOUT US", role='link', foreground="#aaa")
-    self.about_button.set_event_handler('click', self.about_us_click)
-    self.bottom_row.add_component(self.about_button)
+    self.about_btn = Button(text="ABOUT US", role='link', foreground="#aaa")
+    self.about_btn.set_event_handler('click', lambda **e: alert("Connect 4 AI Project v1.0", title="About Us"))
+    self.footer_row.add_component(self.about_btn)
 
-    self.exit_button = Button(text="EXIT", role='link', foreground='#ff4b2b')
-    self.exit_button.set_event_handler('click', self.exit_click)
-    self.bottom_row.add_component(self.exit_button)
-
-    # --- Event Handlers (Preserved) ---
-  def play_now_click(self, **event_args):
-    open_form('CNN')
+    self.exit_btn = Button(text="EXIT GAME", foreground='#ff4b2b', role='link')
+    self.exit_btn.set_event_handler('click', self.exit_click)
+    self.footer_row.add_component(self.exit_btn)
 
   def how_to_play_click(self, **event_args):
-    alert("1. Select a column (⬇) to drop your red piece.\n"
-          "2. AI responds with a yellow piece.\n"
-          "3. Get 4 in a row to win!", title="How to Play")
-
-  def about_us_click(self, **event_args):
-    alert("Connect 4 Optimized\nAI Optimization Project v1.0", title="About Us")
+    """Displays game instructions."""
+    alert("1. Click ⬇ to drop a Red piece.\n2. AI responds with Yellow.\n3. Get 4 in a row to win!", title="How to Play")
 
   def exit_click(self, **event_args):
+    """Confirms and exits the game view."""
     if confirm("Are you sure you want to exit?"):
       self.main_container.clear()
-      self.add_component(Label(text="Thanks for playing!", align='center', font_size=20, foreground="white"))
+      self.add_component(Label(text="Thanks for playing!", foreground="white", align="center", font_size=20))
