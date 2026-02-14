@@ -5,11 +5,11 @@ class Home(HomeTemplate):
   def __init__(self, **properties):
     self.init_components(**properties)
 
-    # 1. FULL SCREEN FIX: Force the background to cover the whole window
+    # 1. Background to cover the whole window
     self.background = "#1a1a1a"
     self.clear() 
 
-    # 2. CENTERING FIX: Create a wrapper to keep content in the middle
+    # 2. Create a wrapper to keep the content in the middle
     self.center_wrapper = FlowPanel(align='center')
     self.add_component(self.center_wrapper)
 
@@ -17,7 +17,7 @@ class Home(HomeTemplate):
     self.main_container = ColumnPanel(width=1000)
     self.center_wrapper.add_component(self.main_container)
 
-    # 4. HERO IMAGE (From Assets)
+    # 4. IMAGE (From Assets)
     self.logo = Image(source="_/theme/Connect 4 Image.png", height=550, display_mode='shrink_to_fit')
     self.main_container.add_component(self.logo)
 
